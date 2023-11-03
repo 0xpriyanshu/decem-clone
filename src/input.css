@@ -1,26 +1,26 @@
 @font-face {
     font-family: 'Acuminprolight';
-    src: url('../assets/new fonts/FontsFree-Net-Acumin-Pro-Light.ttf') format('truetype');
+    src: url('/assets/new fonts/FontsFree-Net-Acumin-Pro-Light.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Acuminpromedium';
-    src: url('../assets/new fonts/FontsFree-Net-Acumin-Pro-Medium-1.ttf') format('truetype');
+    src: url('/assets/new fonts/FontsFree-Net-Acumin-Pro-Medium-1.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Acuminpromedium';
-    src: url('../assets/new fonts/FontsFree-Net-Acumin-Pro-Thin.ttf') format('truetype');
+    src: url('/assets/new fonts/FontsFree-Net-Acumin-Pro-Thin.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Canelalight';
-    src: url('../assets/new fonts/Canela-Light.ttf') format('truetype');
+    src: url('/assets/new fonts/Canela-Light.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Baskerville';
-    src: url('../assets/new fonts/Baskerville Italic.ttf') format('truetype');
+    src: url('/assets/new fonts/Baskerville Italic.ttf') format('truetype');
 }
 
 .dropdown-item {
@@ -123,3 +123,4 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
