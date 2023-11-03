@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decem Clone</title>
+    <link href="/public/style.css" rel="stylesheet">
+    <script src="carousel-init.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
+</head>
+<body >
+    <header>
+        <!-- Announcement Bar -->
+        <div class="flex items-center justify-center bg-blue-600 text-white px-1 py-1.5 z-50" id="notificationBar">
+            <p class="font-acuminthin font-thin">
+                Use code <strong class="font-acuminthin font-semibold">DECEM10</strong> for <strong class="font-acuminthin font-semibold">£10 OFF</strong> your first order
+            </p>
+            <i id="closeButton" class="fa fa-times" style="position: absolute; left: calc(100% - 30px); cursor: pointer;"></i>
+        </div>
+        
+        <script>
+            document.getElementById('closeButton').addEventListener('click', function() {
+                document.getElementById('notificationBar').style.display = 'none';
+            });
+        </script>
+        
+        
+        <!-- Navbar -->
+        <div class="grid grid-cols-3 px-8 w-screen items-center relative">
+            <div class="flex font-acuminlight justify-start py-3 gap-5 relative" >
+                <button class="text-xl font-acuminlight" id="shopButton">SHOP</button>
+                <div class="dropdown-menu fixed top-0 left-0 mt-20 w-screen bg-white z-50" id="dropdownMenu" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease;">
+                    <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 bg-gradient-to-r from-gray-800 to-gray-500" />
+                    <a href="#" class="dropdown-item block font text-4xl py-4 px-7 w-full relative">
+                        
+                        <span class="font-acuminthin">LONDON DRY </span>
+                        <span class="font-baskerville">made with </span>
+                        <span class="font-canelalight">British Gin</span>
+                        <img src="/public/static/Decem-logo.png" alt="Image 1" class="slide-in-image">
+                    </a>
+                    <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 bg-gradient-to-r from-gray-800 to-gray-500" />
+                    <a href="#" class="dropdown-item block font text-4xl py-4 px-7 w-full relative">
+                        
+                        <span class="font-acuminthin">SPICED BLEND </span>
+                        <span class="font-baskerville">made with </span>
+                        <span class="font-canelalight">Caribbean Rum</span>
+                        <img src="/public/static/Decem-logo.png" alt="Image 2" class="slide-in-image">
+                    </a>
+                    <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 bg-gradient-to-r from-gray-800 to-gray-500" />
+                    <a href="#" class="dropdown-item block font text-4xl py-4 px-7 w-full relative">
+                        
+                        <span class="font-acuminthin">APERITIF </span>
+                        <span class="font-baskerville">made with </span>
+                        <span class="font-canelalight">Heritage Botanicals</span>
+                        <img src="/public/static/Decem-logo.png" alt="Image 3" class="slide-in-image">
+                    </a>
+                    <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 bg-gradient-to-r from-gray-800 to-gray-500" />
+                    <a href="#" class="dropdown-item block font text-4xl py-4 px-7 w-full relative">
+                        
+                        <span class="font-acuminthin">TRIO </span>
+                        <span class="font-canelalight">London Dry, Spiced Blend & Aperitif</span>
+                        <img src="/public/static/Decem-logo.png" alt="Image 4" class="slide-in-image">
+                    </a>
+                    <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700  bg-gradient-to-r from-gray-800 to-gray-500" /><br>
+                    
+
+                </div>
+
+                <button class="text-xl font-acuminlight">STORY</button>
+            </div>
+            <div class="flex justify-center items-center" id="logo"> 
+                <img src="static/Decem-logo.png" alt="Logo" class="w-36"/>
+                
+            </div>
+            
+            <button class="flex text-xl font-acuminlight hover:text-blue-600 justify-end items-end py-2" id="basket">
+                BASKET <span class="font-baskerville" id="basket-count" style="display:none">0</span>
+            </button>
+            
+            <!-- cart -->
+            <div class="cart-drawer custom-width" id="cart-drawer">
+                <div class="flex items-center justify-between">
+                    <button class="flex text-xl font-acuminlight hover:text-blue-600 items-center ml-5 py-5" id="basket">
+                        BASKET <span class="font-baskerville" id="basket-count" style="display:none">0</span>
+                    </button>
+                    <button class="flex items-center mr-5 py-5" id="close-cart"><i class="fas fa-times"></i></button>
+                </div>
+                <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 bg-gradient-to-r from-gray-800 to-gray-500 " />
+                <p class="font-canelalight text-center ml-5 py-5" id="cart-message">Your cart is empty</p>
+                <p class="font-canelalight ml-5 py-5" id="congrats-message" style="display:none">Congratulations! You've got free delivery</p>
+                <hr class="h-px ml-5 py-1 mr-5 bg-gray-200 border-0 dark:bg-gray-900 bg-gradient-to-r  hidden" id="cart-hr">
+
+                <div id="cart-content"  class="flex items-center">
+                    
+                    <div class="w-1/3">
+                        <img src="static/SpicedBlend_Serve.webp" alt="Image" id="cart-image" class="ml-20 py-8 w-1/3">
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <p>
+                            <span class="font-acuminlight text-xl">SPICED BLEND</span>
+                            <span class="font-baskerville text-xl">made with</span>
+                        </p>
+                        <p class="font-canelalight text-xl">Caribbean Rum</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- script for cart -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const addToBagButton = document.querySelector('.add-to-bag-button');
+                    const basketCount = document.getElementById('basket-count');
+                    const cartDrawer = document.getElementById('cart-drawer');
+                    const closeCartButton = document.getElementById('close-cart');
+                    const basketButton = document.getElementById('basket');
+                    const cartMessage = document.getElementById('cart-message');
+                    const congratsMessage = document.getElementById('congrats-message');
+                
+                    let count = 0;
+                
+                    addToBagButton.addEventListener('click', function() {
+                        count++;
+                        basketCount.innerText = `(${count})`;
+                        cartDrawer.classList.add('visible');
+                        basketCount.style.display = 'inline';
+                        toggleMessages();
+                    });
+                
+                    basketButton.addEventListener('click', function() {
+                        cartDrawer.classList.add('visible');
+                        toggleMessages();
+                    });
+                
+                    closeCartButton.addEventListener('click', function() {
+                        cartDrawer.classList.remove('visible');
+                        toggleMessages();
+                    });
+                
+                    function toggleMessages() {
+                        const cartImage = document.getElementById('cart-image');
+                        const cartContent = document.getElementById('cart-content');
+                        const cartHr = document.getElementById('cart-hr');
+                    
+                        if (count > 0) {
+                            cartMessage.style.display = 'none';
+                            congratsMessage.style.display = 'block';
+                            cartImage.classList.remove('hidden');
+                            cartContent.classList.remove('hidden');
+                            cartHr.classList.remove('hidden');
+                        } else {
+                            cartMessage.style.display = 'block';
+                            congratsMessage.style.display = 'none';
+                            cartImage.classList.add('hidden');
+                            cartContent.classList.add('hidden');
+                            cartHr.classList.add('hidden');
+                        }
+                    }
+                    
+                });
+                     
+                
+            </script>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full bg-white opacity-75" id="contentBackground"></div>
+
+        
+        <script>
+            const shopButton = document.getElementById('shopButton');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const logo = document.getElementById('logo');
+            const basket = document.getElementById('basket');
+            let isOpen = false;
+
+        
+            shopButton.addEventListener('mouseenter', function() {
+                dropdownMenu.classList.remove('hidden');
+                logo.style.opacity = '0';
+                basket.style.opacity = '0';
+                dropdownMenu.style.maxHeight = '500px';
+            });
+        
+            dropdownMenu.addEventListener('mouseleave', function() {
+                dropdownMenu.classList.add('hidden');
+                logo.style.opacity = '1';
+                basket.style.opacity = '1';
+                dropdownMenu.style.maxHeight = '0';
+                
+
+            });
+        </script>
+        
+    </header>
+    <main>
+        <section class="">
+
+            <!-- Grid -->
+            <div class="grid grid-cols-2 ">
+        
+              <!-- First column -->
+              
+              <div class="carousel">
+                <div class="carousel-slides">
+                  <img src="static/1.jpg" alt="Slide 1" class="carousel-slide active">
+                  <img src="static/2.jpg" alt="Slide 2" class="carousel-slide">
+                  <img src="static/3.jpg" alt="Slide 3" class="carousel-slide">
+                </div>
+                <div class="carousel-indicators">
+                  <div class="carousel-indicator active" data-slide-index="0"></div>
+                  <div class="carousel-indicator" data-slide-index="1"></div>
+                  <div class="carousel-indicator" data-slide-index="2"></div>
+                </div>
+              </div>
+              
+
+              <script>
+                const carousel = document.querySelector('.carousel');
+                const slides = document.querySelectorAll('.carousel-slide');
+                const indicators = document.querySelectorAll('.carousel-indicator');
+
+                let currentSlideIndex = 0;
+
+                function showSlide(slideIndex) {
+                    slides[currentSlideIndex].classList.remove('active');
+                    indicators[currentSlideIndex].classList.remove('active');
+
+                    slides[slideIndex].classList.add('active');
+                    indicators[slideIndex].classList.add('active');
+
+                    currentSlideIndex = slideIndex;
+                }
+
+                // Add click listeners to the indicators
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        showSlide(index);
+                    });
+                });
+
+                
+
+              </script>
+              
+
+
+              <!-- First column -->
+              <!-- Second column -->
+              <div class="mt-5" style="padding-left: 9rem; padding-right: 9rem;">
+                <div class="flex items-center justify-center gap-9 py-10 pr-10 pl-0">
+                    <a href="" class="font-acuminlight text-sm  hover:text-blue-600">LONDON DRY</a>
+                    <a href="" class="font-acuminthin text-sm hover:text-blue-600 font-bold underline">SPICED BLEND</a>
+                    <a href="" class="font-acuminlight text-sm  hover:text-blue-600">APERITIF</a>
+                    <a href="" class="font-acuminlight text-sm  hover:text-blue-600">TRIO</a>
+                </div>
+                <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 mt-[-22px] bg-gradient-to-r from-gray-800 to-gray-500 " />
+                <p class="font-acuminlight font-semibold text-3xl py-4">SPICED BLEND<br>
+                    <strong class="font-baskerville font-thin text-gray-800">made with </strong>
+                    <strong class="font-canelalight font-light text-gray-800">Caribbean Rum</strong>
+                </p>
+                <div class="flex items-end justify-between">
+                    <p class="font-canelalight text-gray-800 justify-start items-start text-xl">Blended <strong class="font-baskerville font-thin text-gray-800">in</strong> England</p>
+                    <p class="mt-2 text-xl">10%vol / 700ml</p>
+                </div>
+                <div class="flex flex-row justify-center items-center py-4 gap-8">
+                    <button class="font-canelalight bg-black text-white px-6 py-2 rounded-full text-2xl font-thin min-w-[430px] hover:bg-blue-600 add-to-bag-button">£29.95 - Add to Bag</button>
+
+                </div>
+                <p class="flex justify-center items-center text-blue-600">FREE UK DELIVERY</p><br>
+                <hr class="h-px bg-gray-200 border-0  dark:bg-gray-700  bg-gradient-to-r from-gray-800 to-gray-500 " />
+                
+                
+                <div id="description-wrapper" class="flex items-end justify-between py-3 cursor-pointer">
+                        <p class="font-acuminlight text-l text-gray-800 justify-start items-start">DESCRIPTION</p>
+                        <span id="toggle-description" class="toggle-button items-end justify-end material-symbols-outlined cursor-pointer">add</span>
+                </div>
+                
+                <div id="content-description" class="collapsible-content hidden">
+                    <p class="font-canelalight items-start text-gray-800 text-l">
+                        Blending a duo of light and white Caribbean rums from 
+                        Martinique and Dominican Republic as the smooth base. 
+                        Spices are then added and the mix is allowed to steep for 2 
+                        days to draw out all of the flavour before being filtered and 
+                        masterfully blended with natural distillates to 10%ABV. The 
+                        result is a buttery, caramel-forward, savoury and spicy light 
+                        spirit with a big impact both on the nose and the taste buds.</p>
+                </div>
+            
+                <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 bg-gradient-to-r from-gray-800 to-gray-500" />   
+            
+                
+                <div id="taste-wrapper" class="flex items-end justify-between py-3 cursor-pointer">
+                        <p class="font-acuminlight text-l text-gray-800 justify-start items-start">TASTE</p>
+                        <span id="toggle-taste" class="toggle-button material-symbols-outlined cursor-pointer">add</span>
+                </div>
+                <div id="content-taste" class="collapsible-content hidden">
+                    <p class="font-canelalight items-start text-gray-800 text-l">
+                        Deep bonfire toffee, warming savoury spice, rounded honey 
+                        sweetness, buttery caramel throughout with a hint of tropical 
+                        fruit.</p>
+                </div>
+            
+                <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 bg-gradient-to-r from-gray-800 to-gray-500" />   
+            
+                <div id="serve-wrapper" class="flex items-end justify-between py-3 cursor-pointer">
+                    <p class="font-acuminlight text-l text-gray-800 justify-start items-start">SERVE</p>
+                    <span id="toggle-serve" class="toggle-button material-symbols-outlined cursor-pointer">add</span>
+                </div>
+                <div id="content-serve" class="collapsible-content hidden">
+                    <p class="font-canelalight items-start text-gray-800 text-l">
+                        Simply serve 50ml chilled over ice with 150ml premium 
+                       Ginger Ale and a lime wedge. 2.3% ABV.</p>
+                </div>
+                <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700 bg-gradient-to-r from-gray-800 to-gray-500" />   
+            
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const toggleButtons = document.querySelectorAll('.toggle-button');
+                        toggleButtons.forEach(button => {
+                            button.addEventListener('click', function() {
+                                const contentId = 'content-' + this.id.replace('toggle-', '');
+                                const content = document.getElementById(contentId);
+                                toggleButtons.forEach(otherButton => {
+                                    if (otherButton !== this) {
+                                        const otherContentId = 'content-' + otherButton.id.replace('toggle-', '');
+                                        const otherContent = document.getElementById(otherContentId);
+                                        otherContent.classList.add('hidden');
+                                        otherButton.textContent = 'add';
+                                    }
+                                });
+                                content.classList.toggle('hidden');
+                                this.textContent = content.classList.contains('hidden') ? 'add' : 'remove';
+                            });
+                        });
+            
+                        const sectionWrappers = document.querySelectorAll('[id$="-wrapper"]');
+                        sectionWrappers.forEach(wrapper => {
+                            wrapper.addEventListener('click', function() {
+                                const toggleButton = this.querySelector('.toggle-button');
+                                toggleButton.click();
+                            });
+                        });
+                    });
+                </script>
+            </div>
+            
+                
+            </div>
+            
+            
+            
+                
+
+
+        
+
+
+             
+              <!-- Second column -->
+        
+            </div>
+            <!-- Grid -->
+        
+          </section>
+        
+    </main>
+
+    <footer>
+
+    </footer>
+    
+<body> 
+
